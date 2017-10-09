@@ -1,24 +1,31 @@
 #include <iostream>
+using namespace std;
 
 int main() {
+    int arraySize = 2000;
     //Create the array
-    int integerArray[2000];
+    int integerArray[arraySize];
+
+    srand(time(0));
 
     //Go through the array and create a random number for each
     int i = -1;
-    while(++i < 2000){
-        integerArray[i] = rand() % 2000;
-        std::cout << "Intger[" << i << "]: " << integerArray[i] << std::endl;
+    while(++i < arraySize){
+        integerArray[i] = rand() % arraySize;
+        cout << "Intger[" << i << "]: " << integerArray[i] << endl;
     }
 
-    std::cout << "------------Start the pointer arithmetic--------------" << std::endl;
+    cout << "------------Start the pointer arithmetic--------------" << endl;
 
     //Create a pointer
     int* pointer = integerArray;
+    int* endPointer = &integerArray[arraySize-1];
+    i = 0;
 
     //Go through the "pointer array" as a pointer
-    for(i = 0; i < 2000; pointer++,i++){
-        std::cout << "Pointer[" << i << "]: " << *pointer << std::endl;
+    while(pointer <= endPointer){
+        cout << "Pointer[" << i++ << "]: " << *pointer << endl;
+        pointer++;
     }
 
     return 0;
